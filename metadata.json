@@ -1,0 +1,8 @@
+{
+  "name": "SIPERPU SMA - Perpustakaan Digital",
+  "description": "Sistem Informasi dan Perpustakaan Digital SMA modern dengan manajemen katalog, sirkulasi, e-book reader, kartu anggota QR, buku tamu, notifikasi push real-time, dan ekspor laporan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

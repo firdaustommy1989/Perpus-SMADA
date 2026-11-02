@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Books Collection: Public read for school members/visitors, write for library management
+    match /books/{bookId} {
+      allow read: if true;
+      allow write: if isValidId(bookId);
+    }
+
+    // Members Collection: Public read for identity verification, write for management
+    match /members/{memberId} {
+      allow read: if true;
+      allow write: if isValidId(memberId);
+    }
+
+    // Loans / Circulation Collection: Read and write for active circulation
+    match /loans/{loanId} {
+      allow read: if true;
+      allow write: if isValidId(loanId);
+    }
+
+    // Guestbook: Visitors can record their daily attendance
+    match /guestbook/{entryId} {
+      allow read: if true;
+      allow create, update: if isValidId(entryId);
+      allow delete: if isValidId(entryId);
+    }
+
+    // Feedback: Students and staff can submit suggestions, librarians can reply
+    match /feedbacks/{feedbackId} {
+      allow read: if true;
+      allow write: if isValidId(feedbackId);
+    }
+
+    // School Settings & Profile
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isValidId(settingId);
+    }
+
+    // Default deny all other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "entities": {
+    "book": {
+      "title": "Book",
+      "description": "Koleksi bahan pustaka dan buku teks pelajaran perpustakaan SMA",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Judul buku" },
+        "author": { "type": "string", "description": "Pengarang / Penulis" },
+        "publisher": { "type": "string", "description": "Penerbit" },
+        "year": { "type": "number", "description": "Tahun terbit" },
+        "isbn": { "type": "string", "description": "Nomor ISBN" },
+        "category": { "type": "string", "description": "Kategori buku" },
+        "callNumber": { "type": "string", "description": "Nomor rak panggil" },
+        "physicalStock": { "type": "number", "description": "Total stok buku fisik" },
+        "availableStock": { "type": "number", "description": "Stok yang tersedia dipinjam" },
+        "coverUrl": { "type": "string", "description": "URL atau Data sampul buku" },
+        "isEbookAvailable": { "type": "boolean", "description": "Status ketersediaan file e-book" },
+        "ebookFileName": { "type": "string", "description": "Nama berkas digital e-book" },
+        "ebookSizeMb": { "type": "number", "description": "Ukuran berkas dalam MB" },
+        "description": { "type": "string", "description": "Sinopsis buku" },
+        "pages": { "type": "number", "description": "Jumlah halaman" },
+        "language": { "type": "string", "description": "Bahasa buku" }
+      },
+      "required": ["title", "author", "category", "physicalStock", "availableStock"]
+    },
+    "member": {
+      "title": "Member",
+      "description": "Data anggota perpustakaan (siswa, guru, dan pegawai)",
+      "type": "object",
+      "properties": {
+        "nis": { "type": "string", "description": "Nomor Induk Siswa atau ID Pegawai" },
+        "nisn": { "type": "string", "description": "NISN atau NUPTK" },
+        "nip": { "type": "string", "description": "Nomor Induk Pegawai" },
+        "nuptk": { "type": "string", "description": "Nomor Unik Pendidik" },
+        "name": { "type": "string", "description": "Nama lengkap" },
+        "role": { "type": "string", "enum": ["siswa", "guru", "pegawai"] },
+        "grade": { "type": "string", "description": "Tingkat kelas atau jabatan" },
+        "classGroup": { "type": "string", "description": "Rombel kelas atau unit kerja" },
+        "position": { "type": "string", "description": "Jabatan" },
+        "employmentStatus": { "type": "string", "description": "Status kepegawaian" },
+        "email": { "type": "string", "description": "Alamat email" },
+        "phone": { "type": "string", "description": "Nomor kontak telepon" },
+        "avatar": { "type": "string", "description": "Foto profil / KTA" },
+        "joinDate": { "type": "string", "description": "Tanggal bergabung" },
+        "status": { "type": "string", "enum": ["aktif", "nonaktif"] }
+      },
+      "required": ["nis", "name", "role", "status"]
+    },
+    "loan": {
+      "title": "Loan",
+      "description": "Transaksi sirkulasi peminjaman dan pengembalian bahan pustaka",
+      "type": "object",
+      "properties": {
+        "memberId": { "type": "string", "description": "ID anggota peminjam" },
+        "memberName": { "type": "string", "description": "Nama peminjam" },
+        "memberNis": { "type": "string", "description": "NIS peminjam" },
+        "memberClass": { "type": "string", "description": "Kelas peminjam" },
+        "bookId": { "type": "string", "description": "ID buku yang dipinjam" },
+        "bookTitle": { "type": "string", "description": "Judul buku" },
+        "bookCategory": { "type": "string", "description": "Kategori buku" },
+        "borrowDate": { "type": "string", "description": "Tanggal pinjam" },
+        "dueDate": { "type": "string", "description": "Batas waktu pengembalian" },
+        "returnDate": { "type": "string", "description": "Tanggal dikembalikan" },
+        "status": { "type": "string", "enum": ["menunggu_persetujuan", "dipinjam", "kembali", "terlambat"] },
+        "fineAmount": { "type": "number", "description": "Jumlah denda keterlambatan" },
+        "notes": { "type": "string", "description": "Catatan peminjaman" },
+        "approvedBy": { "type": "string", "description": "Nama petugas pustakawan penanggungjawab" }
+      },
+      "required": ["memberId", "bookId", "bookTitle", "borrowDate", "dueDate", "status"]
+    },
+    "guestbook": {
+      "title": "Guestbook",
+      "description": "Buku tamu presensi kunjungan harian",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "description": "Tanggal kunjungan" },
+        "time": { "type": "string", "description": "Waktu kunjungan" },
+        "name": { "type": "string", "description": "Nama pengunjung" },
+        "role": { "type": "string", "description": "Status peran" },
+        "identifier": { "type": "string", "description": "NIS atau NIP" },
+        "classOrUnit": { "type": "string", "description": "Kelas atau unit kerja" },
+        "purpose": { "type": "string", "description": "Tujuan kunjungan" },
+        "notes": { "type": "string", "description": "Catatan tambahan" }
+      },
+      "required": ["date", "time", "name", "purpose"]
+    },
+    "feedback": {
+      "title": "Feedback",
+      "description": "Kotak saran dan pengaduan dari siswa atau staf",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "description": "Tanggal saran" },
+        "time": { "type": "string", "description": "Waktu saran" },
+        "senderName": { "type": "string", "description": "Nama pengirim" },
+        "senderNis": { "type": "string", "description": "NIS pengirim" },
+        "role": { "type": "string", "description": "Peran pengirim" },
+        "category": { "type": "string", "description": "Kategori masukan" },
+        "message": { "type": "string", "description": "Isi pesan" },
+        "status": { "type": "string", "enum": ["baru", "ditindaklanjuti", "selesai"] },
+        "adminResponse": { "type": "string", "description": "Tanggapan resmi pustakawan" },
+        "responseDate": { "type": "string", "description": "Tanggal tanggapan" }
+      },
+      "required": ["senderName", "category", "message", "status"]
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Profil sekolah dan konfigurasi operasional perpustakaan",
+      "type": "object",
+      "properties": {
+        "schoolName": { "type": "string" },
+        "npsn": { "type": "string" },
+        "libraryName": { "type": "string" },
+        "accreditation": { "type": "string" },
+        "headOfLibrary": { "type": "string" },
+        "headOfSchool": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "maxBorrowDays": { "type": "number" },
+        "finePerDay": { "type": "number" },
+        "maxBooksPerMember": { "type": "number" },
+        "soundEnabled": { "type": "boolean" },
+        "pushNotificationsEnabled": { "type": "boolean" }
+      },
+      "required": ["schoolName", "libraryName"]
+    }
+  },
+  "firestore": {
+    "/books/{bookId}": {
+      "schema": "book",
+      "description": "Koleksi data buku perpustakaan SMA"
+    },
+    "/members/{memberId}": {
+      "schema": "member",
+      "description": "Data siswa, guru, dan pegawai perpustakaan"
+    },
+    "/loans/{loanId}": {
+      "schema": "loan",
+      "description": "Sirkulasi peminjaman buku fisik"
+    },
+    "/guestbook/{entryId}": {
+      "schema": "guestbook",
+      "description": "Presensi buku tamu kunjungan perpustakaan"
+    },
+    "/feedbacks/{feedbackId}": {
+      "schema": "feedback",
+      "description": "Aspirasi kotak saran dan kritik"
+    },
+    "/settings/{settingId}": {
+      "schema": "profile",
+      "description": "Konfigurasi profil sekolah dan perpustakaan"
+    }
+  }
+}
