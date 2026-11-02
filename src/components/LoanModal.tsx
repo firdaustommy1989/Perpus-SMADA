@@ -38,7 +38,7 @@ export const LoanModal: React.FC<LoanModalProps> = ({ book, onClose }) => {
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-amber-400 flex items-center justify-center font-bold shadow-xs">
               <BookOpen className="w-4 h-4" />
             </div>
             <div>
@@ -50,7 +50,7 @@ export const LoanModal: React.FC<LoanModalProps> = ({ book, onClose }) => {
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 p-1">
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 p-1 cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -113,9 +113,9 @@ export const LoanModal: React.FC<LoanModalProps> = ({ book, onClose }) => {
           )}
 
           {/* Dates Schedule */}
-          <div className="grid grid-cols-2 gap-3 p-3 bg-indigo-50/50 rounded-xl border border-indigo-100">
+          <div className="grid grid-cols-2 gap-3 p-3 bg-amber-400/10 rounded-xl border border-amber-400/25">
             <div>
-              <span className="text-[10px] uppercase font-bold text-indigo-700 block">
+              <span className="text-[10px] uppercase font-bold text-[#0B192C] block">
                 Tanggal Pinjam
               </span>
               <span className="text-xs font-mono font-semibold text-slate-800">
@@ -123,10 +123,10 @@ export const LoanModal: React.FC<LoanModalProps> = ({ book, onClose }) => {
               </span>
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-indigo-700 block">
+              <span className="text-[10px] uppercase font-bold text-[#0B192C] block">
                 Batas Pengembalian
               </span>
-              <span className="text-xs font-mono font-semibold text-indigo-900">
+              <span className="text-xs font-mono font-bold text-[#0B192C]">
                 {formatDateIndo(dueDateStr)} ({profile.maxBorrowDays} hari)
               </span>
             </div>
@@ -141,11 +141,11 @@ export const LoanModal: React.FC<LoanModalProps> = ({ book, onClose }) => {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Contoh: Persiapan olimpiade sains / bahan tugas kelompok"
-              className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#0B192C]"
             />
           </div>
 
-          <div className="text-[11px] text-slate-500 bg-amber-50/80 p-2.5 rounded-lg border border-amber-200">
+          <div className="text-[11px] text-slate-600 bg-amber-50/80 p-2.5 rounded-lg border border-amber-200">
             ⚠️ Denda keterlambatan: {formatRupiah(profile.finePerDay)} per hari kalender. Harap kembalikan tepat waktu.
           </div>
         </div>
@@ -155,16 +155,16 @@ export const LoanModal: React.FC<LoanModalProps> = ({ book, onClose }) => {
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-lg border border-slate-300 text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+            className="px-4 py-2 rounded-lg border border-slate-300 text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
           >
             Batal
           </button>
           <button
             type="button"
             onClick={handleConfirm}
-            className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-xs"
+            className="px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shadow-amber-400/20 cursor-pointer"
           >
-            <CheckCircle2 className="w-3.5 h-3.5" /> Konfirmasi Peminjaman
+            <CheckCircle2 className="w-3.5 h-3.5 stroke-[2.2]" /> Konfirmasi Peminjaman
           </button>
         </div>
 

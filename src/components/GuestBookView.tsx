@@ -99,16 +99,16 @@ export const GuestBookView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* Left Column: Form Presensi Kunjungan (5 cols) */}
-        <div className="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-          <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center">
-              <UserCheck className="w-4 h-4" />
+        <div className="lg:col-span-5 bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
+          <div className="flex items-center gap-3 pb-3.5 border-b border-slate-100">
+            <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold shadow-xs">
+              <UserCheck className="w-5 h-5 stroke-[2.2]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900">
+              <h3 className="text-base font-bold text-[#0B192C] font-heading">
                 Formulir Presensi Masuk
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Ketik NIS untuk isi otomatis nama & kelas
               </p>
             </div>
@@ -222,9 +222,9 @@ export const GuestBookView: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-xs"
+              className="w-full py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-md shadow-amber-400/20 cursor-pointer"
             >
-              <CheckCircle2 className="w-4 h-4" /> Catat Kehadiran Saya
+              <CheckCircle2 className="w-4 h-4 stroke-[2.2]" /> Catat Kehadiran Saya
             </button>
           </form>
         </div>

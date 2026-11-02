@@ -1,16 +1,31 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --color-navy-950: #071324;
+    --color-navy-900: #0B192C;
+    --color-navy-800: #152A47;
+    --color-yellow-400: #FACC15;
+    --color-yellow-500: #EAB308;
+  }
+
   body {
-    font-family: 'DM Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'DM Sans', system-ui, -apple-system, sans-serif;
+    color: #0F172A;
+    background-color: #F8FAFC;
   }
   
   .font-heading {
-    font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  ::selection {
+    background-color: #FACC15;
+    color: #0B192C;
   }
 }
 

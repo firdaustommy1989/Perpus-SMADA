@@ -323,24 +323,24 @@ export const MembersView: React.FC = () => {
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setShowBatchModal(true)}
-            className="px-3 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+            className="px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
             title="Import Data via Berkas CSV / Excel"
           >
-            <Upload className="w-3.5 h-3.5 text-indigo-600" /> Upload Batch CSV
+            <Upload className="w-3.5 h-3.5 text-[#0B192C]" /> Upload Batch CSV
           </button>
 
           <button
             onClick={handleExportCsv}
-            className="px-3 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+            className="px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
           >
-            <Download className="w-3.5 h-3.5" /> Ekspor Data
+            <Download className="w-3.5 h-3.5 text-[#0B192C]" /> Ekspor Data
           </button>
 
           <button
             onClick={() => openAddModal(activeCategory)}
-            className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-xs"
+            className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shadow-amber-400/20 cursor-pointer"
           >
-            <UserPlus className="w-4 h-4" /> 
+            <UserPlus className="w-4 h-4 stroke-[2.2]" /> 
             {activeCategory === 'siswa' ? 'Tambah Data Siswa' : 'Tambah Pegawai / Guru'}
           </button>
         </div>
@@ -353,9 +353,9 @@ export const MembersView: React.FC = () => {
             setActiveCategory('siswa');
             setSelectedFilter('all');
           }}
-          className={`flex-1 py-2 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+          className={`flex-1 py-2 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeCategory === 'siswa'
-              ? 'bg-white text-indigo-700 shadow-sm'
+              ? 'bg-[#0B192C] text-amber-400 font-bold shadow-xs'
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -368,9 +368,9 @@ export const MembersView: React.FC = () => {
             setActiveCategory('pegawai');
             setSelectedFilter('all');
           }}
-          className={`flex-1 py-2 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+          className={`flex-1 py-2 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeCategory === 'pegawai'
-              ? 'bg-white text-indigo-700 shadow-sm'
+              ? 'bg-[#0B192C] text-amber-400 font-bold shadow-xs'
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -394,9 +394,9 @@ export const MembersView: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setSelectedFilter(tab.id)}
-                className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                   selectedFilter === tab.id
-                    ? 'bg-indigo-600 text-white font-semibold shadow-xs'
+                    ? 'bg-[#0B192C] text-amber-400 font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -413,9 +413,9 @@ export const MembersView: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setSelectedFilter(tab.id)}
-                className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                   selectedFilter === tab.id
-                    ? 'bg-indigo-600 text-white font-semibold shadow-xs'
+                    ? 'bg-[#0B192C] text-amber-400 font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:text-slate-900'
                 }`}
               >

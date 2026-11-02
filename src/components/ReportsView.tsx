@@ -71,15 +71,15 @@ export const ReportsView: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={exportCurrentReport}
-              className="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+              className="px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5" /> Ekspor Excel (.csv)
+              <Download className="w-3.5 h-3.5 text-[#0B192C]" /> Ekspor Excel (.csv)
             </button>
             <button
               onClick={handlePrint}
-              className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-xs"
+              className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm shadow-amber-400/20 cursor-pointer"
             >
-              <Printer className="w-3.5 h-3.5" /> Cetak Lembar Resmi
+              <Printer className="w-3.5 h-3.5 stroke-[2.2]" /> Cetak Lembar Resmi
             </button>
           </div>
         </div>
@@ -98,19 +98,19 @@ export const ReportsView: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setReportType(tab.id as any)}
-                className={`p-4 rounded-2xl border text-left transition-all ${
+                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
                   isSelected
-                    ? 'border-indigo-600 bg-indigo-50/50 shadow-xs ring-1 ring-indigo-600'
-                    : 'border-slate-200 bg-white hover:border-slate-300'
+                    ? 'border-[#0B192C] bg-[#0B192C] text-white shadow-md ring-1 ring-[#0B192C]'
+                    : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <Icon className={`w-5 h-5 ${isSelected ? 'text-indigo-600' : 'text-slate-400'}`} />
-                  <span className="text-xs font-mono font-bold text-slate-700 tabular-nums">
+                  <Icon className={`w-5 h-5 ${isSelected ? 'text-amber-400' : 'text-slate-400'}`} />
+                  <span className={`text-xs font-mono font-bold tabular-nums ${isSelected ? 'text-amber-400' : 'text-slate-700'}`}>
                     {tab.count}
                   </span>
                 </div>
-                <div className="text-xs font-bold text-slate-900">{tab.label}</div>
+                <div className={`text-xs font-bold ${isSelected ? 'text-white' : 'text-slate-900'}`}>{tab.label}</div>
               </button>
             );
           })}
@@ -129,7 +129,7 @@ export const ReportsView: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-extrabold uppercase tracking-tight text-slate-900 mt-0.5">
             {profile.schoolName}
           </h2>
-          <h4 className="text-xs font-bold text-indigo-700 tracking-wider uppercase mt-0.5">
+          <h4 className="text-xs font-bold text-[#0B192C] tracking-wider uppercase mt-0.5">
             {profile.libraryName} · NPSN: {profile.npsn}
           </h4>
           <p className="text-[11px] text-slate-500 mt-1">

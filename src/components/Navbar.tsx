@@ -37,24 +37,24 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 no-print">
+      <header className="sticky top-0 z-40 bg-[#0B192C]/95 backdrop-blur-md border-b border-[#152A47] text-white no-print shadow-md">
         {/* Top bar contract: Zone 1 (Wordmark) - Zone 2 (Nav links) - Zone 3 (Action controls) */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6 sm:gap-8">
           
           {/* ZONE 1: Single text element wordmark */}
           <div className="flex items-center gap-3 shrink-0">
             <button 
               onClick={() => setCurrentTab('dashboard')} 
-              className="flex items-center gap-2.5 text-left focus:outline-none"
+              className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer"
             >
-              <div className="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-sm">
-                <BookOpen className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-amber-400 flex items-center justify-center text-slate-950 font-bold shadow-sm transition-transform group-hover:scale-105">
+                <BookOpen className="w-5 h-5 text-slate-950 stroke-[2.2]" />
               </div>
               <div className="leading-tight">
-                <span className="text-base font-extrabold tracking-tight text-slate-900 whitespace-nowrap block">
-                  SIPERPU SMA
+                <span className="text-base font-extrabold tracking-tight text-white whitespace-nowrap block font-heading">
+                  SIPERPU <span className="text-amber-400">SMA</span>
                 </span>
-                <span className="text-[11px] font-medium text-slate-500 whitespace-nowrap block">
+                <span className="text-[11px] font-medium text-slate-400 whitespace-nowrap block">
                   {profile.schoolName.slice(0, 24)}
                 </span>
               </div>
@@ -62,20 +62,20 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* ZONE 2: Clean single-line text navigation links */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
             {navItems.map((item) => {
               const isActive = currentTab === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => setCurrentTab(item.id)}
-                  className={`relative py-1 transition-colors whitespace-nowrap shrink-0 text-xs font-semibold uppercase tracking-wider ${
-                    isActive ? 'text-indigo-600' : 'text-slate-600 hover:text-slate-900'
+                  className={`relative py-1.5 transition-colors whitespace-nowrap shrink-0 text-xs font-semibold uppercase tracking-wider cursor-pointer ${
+                    isActive ? 'text-amber-400 font-bold' : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-400 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.6)]" />
                   )}
                 </button>
               );
@@ -83,11 +83,11 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* ZONE 3: Action Controls */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
             
             {/* Realtime Cloud Sync Indicator */}
             <div 
-              className="hidden sm:flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50/80 text-[11px] font-medium text-slate-700 shadow-2xs"
+              className="hidden sm:flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-[#1E3A5F] bg-[#071324] text-[11px] font-medium text-slate-300 shadow-2xs"
               title={
                 cloudSyncStatus === 'synced' 
                   ? 'Data tersimpan di Google Cloud Firestore dan terupdate otomatis di semua perangkat.' 
@@ -102,27 +102,27 @@ export const Navbar: React.FC = () => {
                 )}
                 <span className={`relative inline-flex rounded-full h-2 w-2 ${
                   cloudSyncStatus === 'synced' 
-                    ? 'bg-emerald-500' 
+                    ? 'bg-emerald-400' 
                     : cloudSyncStatus === 'syncing' 
-                    ? 'bg-amber-500 animate-pulse' 
+                    ? 'bg-amber-400 animate-pulse' 
                     : 'bg-rose-500'
                 }`} />
               </span>
-              <span className="text-slate-600 hidden md:inline">Cloud:</span>
+              <span className="text-slate-400 hidden md:inline text-[11px]">Cloud:</span>
               <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                cloudSyncStatus === 'synced' ? 'text-emerald-700' : 'text-amber-700'
+                cloudSyncStatus === 'synced' ? 'text-amber-400' : 'text-amber-300'
               }`}>
-                {cloudSyncStatus === 'synced' ? 'Realtime' : cloudSyncStatus === 'syncing' ? 'Sync...' : 'Offline'}
+                {cloudSyncStatus === 'synced' ? 'Live' : cloudSyncStatus === 'syncing' ? 'Sync...' : 'Offline'}
               </span>
             </div>
 
             {/* Audio Toggle */}
             <button
               onClick={() => updateProfile({ soundEnabled: !profile.soundEnabled })}
-              className={`p-2 rounded-lg border text-xs transition-colors ${
+              className={`p-2 rounded-lg border text-xs transition-colors cursor-pointer ${
                 profile.soundEnabled 
-                  ? 'border-slate-200 text-slate-700 hover:bg-slate-50' 
-                  : 'border-slate-200 text-slate-400 bg-slate-50'
+                  ? 'border-[#1E3A5F] bg-[#0F223D] text-amber-400 hover:bg-[#152A47]' 
+                  : 'border-[#1E3A5F] bg-[#071324] text-slate-400 hover:bg-[#0F223D]'
               }`}
               title={profile.soundEnabled ? 'Notifikasi Suara: Aktif' : 'Notifikasi Suara: Senyap'}
               aria-label="Toggle notification audio"
@@ -133,11 +133,11 @@ export const Navbar: React.FC = () => {
             {/* Language Switcher */}
             <button
               onClick={() => setLanguage(language === 'id' ? 'en' : 'id')}
-              className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-1 transition-colors"
+              className="px-2.5 py-1.5 rounded-lg border border-[#1E3A5F] bg-[#0F223D] text-xs font-semibold text-slate-200 hover:text-amber-400 hover:bg-[#152A47] flex items-center gap-1 transition-colors cursor-pointer"
               title="Ganti Bahasa / Switch Language"
             >
-              <Globe className="w-3.5 h-3.5 text-slate-500" />
-              <span className="uppercase">{language}</span>
+              <Globe className="w-3.5 h-3.5 text-amber-400" />
+              <span className="uppercase text-[11px] font-bold">{language}</span>
             </button>
 
             {/* Push Notification Bell & Drawer */}
@@ -149,12 +149,12 @@ export const Navbar: React.FC = () => {
                     requestPushPermission();
                   }
                 }}
-                className="relative p-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+                className="relative p-2 rounded-lg border border-[#1E3A5F] bg-[#0F223D] text-slate-200 hover:text-amber-400 hover:bg-[#152A47] transition-colors cursor-pointer"
                 aria-label="Pemberitahuan Transaksi"
               >
                 <Bell className="w-4 h-4" />
                 {unreadCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center font-mono">
+                  <span className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black rounded-full w-4 h-4 flex items-center justify-center font-mono shadow-xs">
                     {unreadCount > 9 ? '9+' : unreadCount}
                   </span>
                 )}
@@ -162,7 +162,7 @@ export const Navbar: React.FC = () => {
 
               {/* Notification Dropdown Panel */}
               {showNotifDropdown && (
-                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-xl shadow-xl border border-slate-200 py-3 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200 py-3 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="px-4 pb-2 border-b border-slate-100 flex items-center justify-between">
                     <div>
                       <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
@@ -199,7 +199,7 @@ export const Navbar: React.FC = () => {
                             }
                           }}
                           className={`p-3 text-left cursor-pointer transition-colors hover:bg-slate-50 ${
-                            !item.read ? 'bg-indigo-50/40' : ''
+                            !item.read ? 'bg-amber-50/50' : ''
                           }`}
                         >
                           <div className="flex items-center justify-between gap-1 mb-1">
@@ -222,7 +222,7 @@ export const Navbar: React.FC = () => {
                     <span>Web Push API Terintegrasi</span>
                     <button
                       onClick={requestPushPermission}
-                      className="text-indigo-600 font-semibold hover:underline"
+                      className="text-[#0B192C] font-bold hover:underline"
                     >
                       Aktifkan Push Browser
                     </button>
@@ -234,22 +234,22 @@ export const Navbar: React.FC = () => {
             {/* Role Switcher Badge Button */}
             <button
               onClick={() => setShowRoleModal(true)}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-indigo-200 bg-indigo-50/70 text-indigo-700 hover:bg-indigo-100 flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-amber-400/40 bg-amber-400/10 text-amber-300 hover:bg-amber-400/20 flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
               title="Ganti Mode Pengguna"
             >
               {role === 'admin' ? (
                 <>
-                  <Shield className="w-3.5 h-3.5 text-indigo-600" />
+                  <Shield className="w-3.5 h-3.5 text-amber-400" />
                   <span>Pustakawan</span>
                 </>
               ) : role === 'guest_kiosk' ? (
                 <>
-                  <ClipboardList className="w-3.5 h-3.5 text-amber-600" />
+                  <ClipboardList className="w-3.5 h-3.5 text-amber-400" />
                   <span>Kios Tamu</span>
                 </>
               ) : (
                 <>
-                  <User className="w-3.5 h-3.5 text-indigo-600" />
+                  <User className="w-3.5 h-3.5 text-amber-400" />
                   <span className="truncate max-w-[100px]">{activeMember.name.split(' ')[0]}</span>
                 </>
               )}
@@ -258,7 +258,7 @@ export const Navbar: React.FC = () => {
             {/* Logout Button */}
             <button
               onClick={() => logout()}
-              className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:text-rose-600 hover:border-rose-200 hover:bg-rose-50 transition-colors"
+              className="p-2 rounded-lg border border-[#1E3A5F] bg-[#0F223D] text-slate-300 hover:text-rose-400 hover:border-rose-500/40 hover:bg-rose-950/30 transition-colors cursor-pointer"
               title="Keluar dari Akun (Logout)"
               aria-label="Logout"
             >
@@ -268,7 +268,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+              className="lg:hidden p-2 rounded-lg border border-[#1E3A5F] bg-[#0F223D] text-slate-200 hover:text-amber-400 transition-colors cursor-pointer"
               aria-label="Buka Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -278,7 +278,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1">
+          <div className="lg:hidden border-t border-[#152A47] bg-[#071324] px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -286,10 +286,10 @@ export const Navbar: React.FC = () => {
                   setCurrentTab(item.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full text-left px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide uppercase transition-colors ${
                   currentTab === item.id 
-                    ? 'bg-indigo-50 text-indigo-600' 
-                    : 'text-slate-700 hover:bg-slate-50'
+                    ? 'bg-amber-400 text-slate-950 font-bold' 
+                    : 'text-slate-300 hover:bg-[#0F223D] hover:text-white'
                 }`}
               >
                 {item.label}
@@ -301,22 +301,22 @@ export const Navbar: React.FC = () => {
 
       {/* Role Selection Modal */}
       {showRoleModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150 text-slate-900">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <h3 className="text-base font-bold text-slate-900">
-                Pilih Hak Akses & Akun Demo
+              <h3 className="text-base font-bold text-[#0B192C] font-heading">
+                Pilih Hak Akses Pengguna
               </h3>
               <button
                 onClick={() => setShowRoleModal(false)}
-                className="text-slate-400 hover:text-slate-600 p-1 rounded-md"
+                className="text-slate-400 hover:text-slate-600 p-1 rounded-md cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <p className="text-xs text-slate-500 mt-2">
-              Anda dapat menguji ketiga peran utama sistem perpustakaan SMA secara instan tanpa perlu logout:
+              Uji peran sistem perpustakaan SMA secara instan:
             </p>
 
             <div className="mt-4 space-y-2.5">
@@ -326,22 +326,22 @@ export const Navbar: React.FC = () => {
                   setRole('admin');
                   setShowRoleModal(false);
                 }}
-                className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-start gap-3 ${
+                className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-start gap-3 cursor-pointer ${
                   role === 'admin' 
-                    ? 'border-indigo-600 bg-indigo-50/50 shadow-xs ring-1 ring-indigo-600' 
+                    ? 'border-[#0B192C] bg-amber-50/60 shadow-xs ring-1 ring-[#0B192C]' 
                     : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
-                <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-amber-400 flex items-center justify-center shrink-0">
                   <Shield className="w-4 h-4" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-bold text-slate-900">Admin / Pustakawan</span>
-                    {role === 'admin' && <Check className="w-4 h-4 text-indigo-600" />}
+                    {role === 'admin' && <Check className="w-4 h-4 text-[#0B192C]" />}
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Kelola buku, setujui peminjaman, data siswa/guru, denda, dan laporan sekolah.
+                    Kelola koleksi buku, sirkulasi peminjaman, data siswa/guru, denda, dan laporan sekolah.
                   </p>
                 </div>
               </button>
@@ -349,7 +349,7 @@ export const Navbar: React.FC = () => {
               {/* Option 2: Siswa / Anggota */}
               <div className={`p-3.5 rounded-xl border transition-all ${
                 role === 'siswa' 
-                  ? 'border-indigo-600 bg-indigo-50/50 shadow-xs ring-1 ring-indigo-600' 
+                  ? 'border-[#0B192C] bg-amber-50/60 shadow-xs ring-1 ring-[#0B192C]' 
                   : 'border-slate-200'
               }`}>
                 <div 
@@ -359,13 +359,13 @@ export const Navbar: React.FC = () => {
                   }}
                   className="flex items-start gap-3 cursor-pointer"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0">
-                    <User className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center shrink-0">
+                    <User className="w-4 h-4 font-bold" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-bold text-slate-900">Siswa / Anggota Perpustakaan</span>
-                      {role === 'siswa' && <Check className="w-4 h-4 text-emerald-600" />}
+                      {role === 'siswa' && <Check className="w-4 h-4 text-[#0B192C]" />}
                     </div>
                     <p className="text-xs text-slate-500 mt-0.5">
                       Cari buku, ajukan pinjam, baca e-book digital, unduh KTA QR, dan pantau denda.
@@ -388,7 +388,7 @@ export const Navbar: React.FC = () => {
                         setShowRoleModal(false);
                       }
                     }}
-                    className="w-full text-xs font-medium py-1.5 px-2.5 rounded-lg border border-slate-300 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="w-full text-xs font-medium py-1.5 px-2.5 rounded-lg border border-slate-300 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#0B192C]"
                   >
                     {members.map(m => (
                       <option key={m.id} value={m.id}>
@@ -405,19 +405,19 @@ export const Navbar: React.FC = () => {
                   setRole('guest_kiosk');
                   setShowRoleModal(false);
                 }}
-                className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-start gap-3 ${
+                className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-start gap-3 cursor-pointer ${
                   role === 'guest_kiosk' 
-                    ? 'border-indigo-600 bg-indigo-50/50 shadow-xs ring-1 ring-indigo-600' 
+                    ? 'border-[#0B192C] bg-amber-50/60 shadow-xs ring-1 ring-[#0B192C]' 
                     : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
-                <div className="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 text-amber-400 flex items-center justify-center shrink-0">
                   <ClipboardList className="w-4 h-4" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-bold text-slate-900">Kios Buku Tamu Digital</span>
-                    {role === 'guest_kiosk' && <Check className="w-4 h-4 text-amber-600" />}
+                    {role === 'guest_kiosk' && <Check className="w-4 h-4 text-[#0B192C]" />}
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5">
                     Mode layar sentuh di depan pintu perpustakaan untuk presensi kunjungan harian siswa & guru.

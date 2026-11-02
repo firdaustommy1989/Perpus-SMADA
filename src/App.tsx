@@ -69,20 +69,22 @@ const AppContent: React.FC = () => {
         {renderCurrentView()}
       </main>
 
-      {/* Quiet Footer (Anti-Slop Restraint: No pseudo tickers, clean educational info) */}
+      {/* Quiet Footer (Clean Corporate Navy & Bright Yellow Accent) */}
       <footer className="border-t border-slate-200 bg-white py-6 no-print text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-indigo-600" />
-            <span className="font-semibold text-slate-700">{profile.libraryName}</span>
-            <span aria-hidden="true">·</span>
+          <div className="flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded-md bg-amber-400 flex items-center justify-center text-slate-950 font-bold shadow-2xs">
+              <BookOpen className="w-3.5 h-3.5 text-slate-950 stroke-[2.2]" />
+            </div>
+            <span className="font-bold text-[#0B192C]">{profile.libraryName}</span>
+            <span aria-hidden="true" className="text-slate-300">·</span>
             <span>{profile.schoolName}</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] font-mono">
+          <div className="flex items-center gap-3 text-[11px] font-mono text-slate-500">
             <span>NPSN: {profile.npsn}</span>
-            <span aria-hidden="true">·</span>
-            <span>Sistem Informasi Perpustakaan Digital SMA</span>
+            <span aria-hidden="true" className="text-slate-300">·</span>
+            <span className="text-[#0B192C] font-semibold">Sistem Perpustakaan Digital SMA</span>
           </div>
         </div>
       </footer>

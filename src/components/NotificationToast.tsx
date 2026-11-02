@@ -61,9 +61,9 @@ export const NotificationToast: React.FC = () => {
                     if (toast.linkToTab) setCurrentTab(toast.linkToTab);
                     dismissToast(toast.id);
                   }}
-                  className="mt-2 text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
+                  className="mt-2 text-xs font-bold text-[#0B192C] hover:text-slate-700 inline-flex items-center gap-1 transition-colors cursor-pointer"
                 >
-                  Lihat Detail <ArrowRight className="w-3 h-3" />
+                  Lihat Detail <ArrowRight className="w-3 h-3 text-amber-500" />
                 </button>
               )}
             </div>

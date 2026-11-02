@@ -125,7 +125,7 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({ initialData, onClo
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-amber-400 flex items-center justify-center shadow-xs font-bold">
               <BookPlus className="w-4 h-4" />
             </div>
             <div>
@@ -137,7 +137,7 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({ initialData, onClo
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 p-1 rounded-md">
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 p-1 rounded-md cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -149,7 +149,7 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({ initialData, onClo
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                <ImageIcon className="w-4 h-4 text-indigo-600" />
+                <ImageIcon className="w-4 h-4 text-[#0B192C]" />
                 Upload Sampul / Cover Buku
               </label>
               <span className="text-[11px] text-slate-500">
@@ -428,7 +428,7 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({ initialData, onClo
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Deskripsi ringkas pokok bahasan buku atau kompetensi dasar..."
-              className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#0B192C]"
             />
           </div>
 
@@ -436,15 +436,15 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({ initialData, onClo
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg border border-slate-300 text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+              className="px-4 py-2 rounded-lg border border-slate-300 text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
             >
               Batal
             </button>
             <button
               type="submit"
-              className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-xs"
+              className="px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shadow-amber-400/20 cursor-pointer"
             >
-              <Save className="w-3.5 h-3.5" /> Simpan Data Buku
+              <Save className="w-3.5 h-3.5 stroke-[2.2]" /> Simpan Data Buku
             </button>
           </div>
         </form>

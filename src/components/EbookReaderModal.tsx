@@ -83,7 +83,7 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
         {/* Header Toolbar */}
         <div className="px-4 py-3 border-b flex items-center justify-between gap-3 shrink-0 bg-inherit">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600/10 text-indigo-600 flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-amber-400 flex items-center justify-center shrink-0 shadow-xs font-bold">
               <BookOpen className="w-4 h-4" />
             </div>
             <div className="min-w-0">
@@ -102,7 +102,7 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
             <div className="hidden sm:flex items-center border rounded-lg px-2 py-1 text-xs gap-2">
               <button
                 onClick={() => setFontSize(s => Math.max(13, s - 1))}
-                className="hover:opacity-75 font-bold px-1"
+                className="hover:opacity-75 font-bold px-1 cursor-pointer"
                 title="Perkecil Teks"
               >
                 A-
@@ -110,7 +110,7 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
               <span className="font-mono text-[11px] opacity-60">{fontSize}px</span>
               <button
                 onClick={() => setFontSize(s => Math.min(24, s + 1))}
-                className="hover:opacity-75 font-bold px-1"
+                className="hover:opacity-75 font-bold px-1 cursor-pointer"
                 title="Perbesar Teks"
               >
                 A+
@@ -121,21 +121,21 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
             <div className="flex items-center border rounded-lg p-0.5 text-xs">
               <button
                 onClick={() => setTheme('light')}
-                className={`p-1.5 rounded ${theme === 'light' ? 'bg-white shadow-xs text-slate-900' : 'opacity-60 hover:opacity-100'}`}
+                className={`p-1.5 rounded cursor-pointer ${theme === 'light' ? 'bg-white shadow-xs text-slate-900' : 'opacity-60 hover:opacity-100'}`}
                 title="Mode Terang"
               >
                 <Sun className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setTheme('sepia')}
-                className={`p-1.5 rounded ${theme === 'sepia' ? 'bg-[#ebd7be] text-[#433422]' : 'opacity-60 hover:opacity-100'}`}
+                className={`p-1.5 rounded cursor-pointer ${theme === 'sepia' ? 'bg-[#ebd7be] text-[#433422]' : 'opacity-60 hover:opacity-100'}`}
                 title="Mode Sepia (Nyaman Membaca)"
               >
                 <Coffee className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setTheme('dark')}
-                className={`p-1.5 rounded ${theme === 'dark' ? 'bg-slate-800 text-white' : 'opacity-60 hover:opacity-100'}`}
+                className={`p-1.5 rounded cursor-pointer ${theme === 'dark' ? 'bg-slate-800 text-white' : 'opacity-60 hover:opacity-100'}`}
                 title="Mode Gelap"
               >
                 <Moon className="w-3.5 h-3.5" />
@@ -152,7 +152,7 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
                   'info'
                 );
               }}
-              className={`p-2 rounded-lg border transition-colors ${
+              className={`p-2 rounded-lg border transition-colors cursor-pointer ${
                 bookmarked ? 'text-amber-600 border-amber-300 bg-amber-50' : 'opacity-70 hover:opacity-100'
               }`}
               title="Tandai Halaman (Bookmark)"
@@ -164,9 +164,9 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
             <button
               onClick={handleDownload}
               disabled={isDownloading}
-              className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-colors disabled:opacity-50"
+              className="px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-sm shadow-amber-400/20 transition-all disabled:opacity-50 cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3.5 h-3.5 stroke-[2.2]" />
               <span className="hidden sm:inline">
                 {isDownloading ? `${downloadProgress}%` : 'Unduh PDF'}
               </span>
@@ -175,7 +175,7 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
             {/* Fullscreen Toggle */}
             <button
               onClick={() => setIsFullScreen(!isFullScreen)}
-              className="p-2 rounded-lg border opacity-70 hover:opacity-100 transition-colors"
+              className="p-2 rounded-lg border opacity-70 hover:opacity-100 transition-colors cursor-pointer"
               title={isFullScreen ? 'Kecilkan' : 'Layar Penuh'}
             >
               {isFullScreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -184,7 +184,7 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
             {/* Close */}
             <button
               onClick={onClose}
-              className="p-2 rounded-lg border hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition-colors"
+              className="p-2 rounded-lg border hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition-colors cursor-pointer"
               title="Tutup Reader"
             >
               <X className="w-4 h-4" />
@@ -194,9 +194,9 @@ export const EbookReaderModal: React.FC<EbookReaderModalProps> = ({ book, onClos
 
         {/* Download progress bar */}
         {isDownloading && (
-          <div className="w-full bg-indigo-100 h-1">
+          <div className="w-full bg-slate-200 h-1.5">
             <div 
-              className="bg-indigo-600 h-1 transition-all duration-200" 
+              className="bg-amber-400 h-1.5 transition-all duration-200" 
               style={{ width: `${downloadProgress}%` }} 
             />
           </div>

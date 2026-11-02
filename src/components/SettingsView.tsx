@@ -46,7 +46,7 @@ export const SettingsView: React.FC = () => {
         {/* Section 1: Profil Sekolah & Perpustakaan */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-amber-400 flex items-center justify-center font-bold shadow-xs">
               <Building className="w-4 h-4" />
             </div>
             <div>
@@ -69,7 +69,7 @@ export const SettingsView: React.FC = () => {
                 required
                 value={formData.schoolName}
                 onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
-                className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#0B192C]"
               />
             </div>
 
@@ -254,7 +254,7 @@ export const SettingsView: React.FC = () => {
                 type="checkbox"
                 checked={formData.soundEnabled}
                 onChange={(e) => setFormData({ ...formData, soundEnabled: e.target.checked })}
-                className="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4"
+                className="mt-0.5 rounded text-[#0B192C] focus:ring-[#0B192C] w-4 h-4 cursor-pointer"
               />
               <div>
                 <span className="text-xs font-bold text-slate-900 block">
@@ -266,7 +266,7 @@ export const SettingsView: React.FC = () => {
               </div>
             </label>
 
-            <div className="flex items-center justify-between p-3 bg-indigo-50/60 rounded-xl border border-indigo-200">
+            <div className="flex items-center justify-between p-3.5 bg-amber-400/10 rounded-xl border border-amber-400/30">
               <div>
                 <span className="text-xs font-bold text-slate-900 block">
                   Uji Coba Notifikasi Push
@@ -278,7 +278,7 @@ export const SettingsView: React.FC = () => {
               <button
                 type="button"
                 onClick={testPushNotification}
-                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-colors shadow-xs"
+                className="px-3.5 py-1.5 rounded-lg bg-[#0B192C] hover:bg-slate-800 text-amber-400 text-xs font-bold transition-colors shadow-xs cursor-pointer"
               >
                 Kirim Uji Coba
               </button>
@@ -296,9 +296,9 @@ export const SettingsView: React.FC = () => {
 
           <button
             type="submit"
-            className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-2 transition-colors shadow-xs"
+            className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-2 transition-all shadow-md shadow-amber-400/20 cursor-pointer"
           >
-            <Save className="w-4 h-4" /> Simpan Seluruh Pengaturan
+            <Save className="w-4 h-4 stroke-[2.2]" /> Simpan Seluruh Pengaturan
           </button>
         </div>
 

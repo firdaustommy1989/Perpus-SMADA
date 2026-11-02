@@ -57,12 +57,12 @@ export const FeedbackFaqView: React.FC = () => {
         </div>
 
         {/* Tab Toggle */}
-        <div className="flex items-center gap-1 p-1 bg-white rounded-xl border border-slate-200 shadow-xs">
+        <div className="flex items-center gap-1 p-1 bg-slate-200/70 rounded-xl">
           <button
             onClick={() => setActiveTab('faq')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'faq'
-                ? 'bg-indigo-600 text-white shadow-xs'
+                ? 'bg-[#0B192C] text-amber-400 font-bold shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -70,9 +70,9 @@ export const FeedbackFaqView: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveTab('feedback')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'feedback'
-                ? 'bg-indigo-600 text-white shadow-xs'
+                ? 'bg-[#0B192C] text-amber-400 font-bold shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -96,10 +96,10 @@ export const FeedbackFaqView: React.FC = () => {
                 >
                   <button
                     onClick={() => setExpandedFaqId(isOpen ? null : faq.id)}
-                    className="w-full text-left p-4.5 flex items-center justify-between gap-3 font-semibold text-slate-900 hover:bg-slate-50/70 transition-colors"
+                    className="w-full text-left p-4.5 flex items-center justify-between gap-3 font-semibold text-slate-900 hover:bg-slate-50/70 transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-400/20 text-slate-900 border border-amber-400/40">
                         {faq.category}
                       </span>
                       <span className="text-xs sm:text-sm">{faq.question}</span>
@@ -162,7 +162,7 @@ export const FeedbackFaqView: React.FC = () => {
           {/* Submission Form (5 cols) */}
           <div className="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
             <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
-              <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-amber-400 flex items-center justify-center font-bold shadow-xs">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div>
@@ -211,16 +211,16 @@ export const FeedbackFaqView: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tuliskan judul buku, edisi, atau detail saran fasilitas secara lengkap..."
-                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#0B192C]"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-xs"
+                className="w-full py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-md shadow-amber-400/20 cursor-pointer"
               >
-                <Send className="w-3.5 h-3.5" /> Kirimkan Aspirasi Saya
+                <Send className="w-3.5 h-3.5 stroke-[2.2]" /> Kirimkan Aspirasi Saya
               </button>
             </form>
           </div>
@@ -246,7 +246,7 @@ export const FeedbackFaqView: React.FC = () => {
                         <span className="text-xs font-bold text-slate-900">{fb.senderName}</span>
                         <span className="text-[10px] text-slate-400 font-mono">NIS: {fb.senderNis}</span>
                       </div>
-                      <span className="text-[10px] text-indigo-600 font-semibold mt-0.5 block">
+                      <span className="text-[10px] text-[#0B192C] font-bold mt-0.5 block">
                         Kategori: {fb.category}
                       </span>
                     </div>
@@ -293,13 +293,13 @@ export const FeedbackFaqView: React.FC = () => {
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => handleAdminReply(fb.id)}
-                                className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold"
+                                className="px-3.5 py-1.5 rounded-lg bg-[#0B192C] hover:bg-slate-800 text-amber-400 text-xs font-bold transition-colors cursor-pointer"
                               >
                                 Publikasikan Tanggapan
                               </button>
                               <button
                                 onClick={() => setReplyingId(null)}
-                                className="px-3 py-1.5 rounded-lg border border-slate-300 text-xs text-slate-600"
+                                className="px-3 py-1.5 rounded-lg border border-slate-300 text-xs text-slate-600 hover:bg-slate-100 cursor-pointer"
                               >
                                 Batal
                               </button>
@@ -311,9 +311,9 @@ export const FeedbackFaqView: React.FC = () => {
                               setReplyingId(fb.id);
                               setResponseText('');
                             }}
-                            className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 flex items-center gap-1 mt-1"
+                            className="text-xs font-bold text-[#0B192C] hover:text-slate-700 flex items-center gap-1 mt-1 cursor-pointer"
                           >
-                            <Reply className="w-3 h-3" /> Beri Tanggapan Resmi
+                            <Reply className="w-3 h-3 text-amber-500" /> Beri Tanggapan Resmi
                           </button>
                         )}
                       </div>
